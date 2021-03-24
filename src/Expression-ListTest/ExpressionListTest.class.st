@@ -38,7 +38,9 @@ ExpressionListTest >> testEvaluateExpression [
 	expr := Expression expression: '1+2'.
 	exprList := ExpressionList new.
 	exprList evaluationContext: [  ] asContext.
-	self assert: (exprList evaluateExpression: expr) equals: 3
+	self assert: (exprList evaluateExpression: expr) equals: 3. 
+	self assert: expr result equals:3. 
+	
 ]
 
 { #category : #tests }

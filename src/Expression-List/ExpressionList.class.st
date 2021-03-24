@@ -64,15 +64,17 @@ ExpressionList >> contains: anExpression result: aResult [
 
 { #category : #'as yet unclassified' }
 ExpressionList >> evaluateExpression: anExpression [
+
 	self flag: 'dans failBlock mettre une exception'.
 
-	^ evaluationContext receiver class compiler
-		  source: anExpression expression readStream;
-		  context: evaluationContext;
-		  receiver: evaluationContext receiver;
-		  requestor: self;
-		  failBlock: [ nil ];
-		  evaluate
+	anExpression result: (evaluationContext receiver class compiler
+			 source: anExpression expression readStream;
+			 context: evaluationContext;
+			 receiver: evaluationContext receiver;
+			 requestor: self;
+			 failBlock: [ nil ];
+			 evaluate).
+	^ anExpression result
 ]
 
 { #category : #accessing }
