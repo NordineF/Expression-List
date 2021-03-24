@@ -2,7 +2,8 @@ Class {
 	#name : #ExpressionList,
 	#superclass : #Object,
 	#instVars : [
-		'expressionList'
+		'expressionList',
+		'evaluationContext'
 	],
 	#category : #'Expression-List'
 }
@@ -59,6 +60,24 @@ ExpressionList >> contains: anExpression result: aResult [
 	checkExpression result: aResult. 
 	
 	^ expressionList includes: anExpression. 
+]
+
+{ #category : #'as yet unclassified' }
+ExpressionList >> evaluateExpression: anExpression [
+	self flag: 'dans failBlock mettre une exception'.
+
+	^ evaluationContext receiver class compiler
+		  source: anExpression expression readStream;
+		  context: evaluationContext;
+		  receiver: evaluationContext receiver;
+		  requestor: self;
+		  failBlock: [ nil ];
+		  evaluate
+]
+
+{ #category : #accessing }
+ExpressionList >> evaluationContext: aContext [ 
+	evaluationContext:= aContext.
 ]
 
 { #category : #initialization }

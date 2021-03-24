@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'expression',
-		'result'
+		'result',
+		'autoEvaluate'
 	],
 	#category : #'Expression-List'
 }
@@ -12,6 +13,17 @@ Class {
 Expression class >> expression: aString [
 
 	^ self new expression: aString
+]
+
+{ #category : #'as yet unclassified' }
+Expression >> autoEvaluate [
+
+	^ autoEvaluate ifNil: [ autoEvaluate := false ]
+]
+
+{ #category : #accessing }
+Expression >> autoEvaluate: aBoolean [ 
+	autoEvaluate := aBoolean
 ]
 
 { #category : #accessing }

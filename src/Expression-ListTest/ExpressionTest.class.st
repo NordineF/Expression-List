@@ -5,6 +5,16 @@ Class {
 }
 
 { #category : #tests }
+ExpressionTest >> testAutoEvaluation [
+
+	| expr |
+	expr := Expression new.
+	self deny: expr autoEvaluate.
+	expr autoEvaluate: true.
+	self assert: expr autoEvaluate
+]
+
+{ #category : #tests }
 ExpressionTest >> testExpressionInstantiation [
 	
 	|expression|
