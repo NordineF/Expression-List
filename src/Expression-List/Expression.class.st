@@ -8,6 +8,12 @@ Class {
 	#category : #'Expression-List'
 }
 
+{ #category : #'instance creation' }
+Expression class >> expression: aString [
+
+	^ self new expression: aString
+]
+
 { #category : #accessing }
 Expression >> expression [
 	^ expression. 

@@ -37,6 +37,12 @@ ExpressionList >> addExpression: anExpression result: aResult [
 	
 ]
 
+{ #category : #adding }
+ExpressionList >> addExpressionFromString: aString [
+
+	self addExpression: (Expression expression: aString)
+]
+
 { #category : #comparing }
 ExpressionList >> contains: anExpression [
 	" allows us to know if an expression is present or not in our expressionList"
@@ -78,7 +84,7 @@ ExpressionList >> getSize [
 
 { #category : #initialization }
 ExpressionList >> initialize [
-	
+	"changer le nom de la classe ExpressionList"
 	super initialize.
 	expressionList := OrderedCollection new. 
 	
