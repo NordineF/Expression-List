@@ -54,11 +54,12 @@ ExpressionListPresenter >> buildToolBar [
 
 { #category : #initialization }
 ExpressionListPresenter >> initializePresenters [
+
 	table:= self newTable. 
 	toolbar:= self buildToolBar. 
 	table 
 		addColumn: (SpStringTableColumn title: 'Expression' evaluated:#expression);
-		addColumn: (SpStringTableColumn title: 'Result' evaluated:#result).
+		addColumn: (SpStringTableColumn title: 'Result' evaluated:[:e| e result printString]).
 	table contextMenu: [ self rootCommandsGroup beRoot asMenuPresenter ]. 
 	table items: listExpressions expressionList. 	
 ]
