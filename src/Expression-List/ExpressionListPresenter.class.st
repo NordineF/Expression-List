@@ -64,6 +64,13 @@ ExpressionListPresenter >> initializePresenters [
 	table items: listExpressions expressionList. 	
 ]
 
+{ #category : #initialization }
+ExpressionListPresenter >> initializeWindow: aWindowPresenter [
+
+	super initializeWindow: aWindowPresenter.
+	self rootCommandsGroup installShortcutsIn: aWindowPresenter
+]
+
 { #category : #testing }
 ExpressionListPresenter >> isExpressionSelected [
 	
