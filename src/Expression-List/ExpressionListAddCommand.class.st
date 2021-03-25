@@ -14,12 +14,17 @@ ExpressionListAddCommand >> asSpecCommand [
 ]
 
 { #category : #initialization }
-ExpressionListAddCommand >> execute [ 
-| expression|
-	expression:= self expressionListPresenter newExpression.
-	self hasSelectedExpression ifTrue:[ self expressionList addExpression: expression after: self selectedExpression]
-	ifFalse:[self expressionList addExpression:expression].
-	self expressionListPresenter updateView. 
+ExpressionListAddCommand >> execute [
+
+	| expression |
+	expression := self expressionListPresenter newExpression.
+	self hasSelectedExpression
+		ifTrue: [ 
+			self expressionList
+				addExpression: expression
+				after: self selectedExpression ]
+		ifFalse: [ self expressionList addExpression: expression ].
+	self expressionListPresenter updateView
 ]
 
 { #category : #initialization }

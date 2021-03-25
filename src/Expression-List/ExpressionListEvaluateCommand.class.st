@@ -13,6 +13,12 @@ ExpressionListEvaluateCommand >> asSpecCommand [
 		  yourself
 ]
 
+{ #category : #testing }
+ExpressionListEvaluateCommand >> canBeExecuted [ 
+	" we can execute only selected expression"
+	^ self context isExpressionSelected. 
+]
+
 { #category : #executing }
 ExpressionListEvaluateCommand >> execute [
 	self flag:' context is empty for now'. 

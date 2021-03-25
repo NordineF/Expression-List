@@ -14,19 +14,25 @@ ExpressionListRemoveCommand >> asSpecCommand [
 ]
 
 { #category : #initialization }
-ExpressionListRemoveCommand >> canBeExecuted [ 
+ExpressionListRemoveCommand >> canBeExecuted [
+
 	" we can remove only selected expression"
-	^ self context isExpressionSelected. 
+
+	^ self context isExpressionSelected
 ]
 
 { #category : #initialization }
 ExpressionListRemoveCommand >> execute [
-	self expressionList removeExpression: self selectedExpression. 
-	self expressionListPresenter updateView. 
+
+	self expressionList removeExpression: self selectedExpression.
+	self expressionListPresenter updateView
 ]
 
 { #category : #initialization }
-ExpressionListRemoveCommand >> initialize [ 
-	super initialize. 
-	self name:'Remove'; description:'Removes the selected expression'.
+ExpressionListRemoveCommand >> initialize [
+
+	super initialize.
+	self
+		name: 'Remove';
+		description: 'Removes the selected expression'
 ]
