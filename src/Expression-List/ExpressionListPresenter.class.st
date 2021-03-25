@@ -15,7 +15,9 @@ ExpressionListPresenter class >> buildCommandsGroupWith: presenter forRoot: root
 	rootCommandGroup
 		register: (ExpressionListAddCommand forSpec context: presenter);
 		register: (ExpressionListRemoveCommand forSpec context: presenter);
-		register: (ExpressionListEvaluateCommand forSpec context: presenter)
+		register: (ExpressionListEvaluateCommand forSpec context: presenter);
+		register: (ExpressionListInspectCommand forSpec context: presenter);
+		register: (ExpressionListModifyCommand forSpec context: presenter)
 ]
 
 { #category : #specs }
