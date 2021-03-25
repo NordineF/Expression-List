@@ -83,6 +83,17 @@ ExpressionListPresenter >> listExpressions [
 	^ listExpressions.
 ]
 
+{ #category : #'as yet unclassified' }
+ExpressionListPresenter >> modifyExpression: aSelectedExpression [
+
+	aSelectedExpression expression: (self
+			 request: 'Enter a new Expression'
+			 initialAnswer: ''
+			 title: 'Create new Expression').
+
+	^ aSelectedExpression
+]
+
 { #category : #initialization }
 ExpressionListPresenter >> newExpression [
 	" Create window to ask user to enter a new Expression."
