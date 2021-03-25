@@ -12,10 +12,10 @@ Class {
 { #category : #commands }
 ExpressionListPresenter class >> buildCommandsGroupWith: presenter forRoot: rootCommandGroup [
 
-rootCommandGroup 
-	register: (ExpressionListAddCommand forSpec context: presenter);
-	register: (ExpressionListRemoveCommand forSpec context: presenter).
-	
+	rootCommandGroup
+		register: (ExpressionListAddCommand forSpec context: presenter);
+		register: (ExpressionListRemoveCommand forSpec context: presenter);
+		register: (ExpressionListEvaluateCommand forSpec context: presenter)
 ]
 
 { #category : #specs }
