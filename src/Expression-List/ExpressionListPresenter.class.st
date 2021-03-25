@@ -91,7 +91,7 @@ ExpressionListPresenter >> modifyExpression: aSelectedExpression [
 	aSelectedExpression expression: (self
 			 request: 'Enter a new Expression'
 			 initialAnswer: ''
-			 title: 'Create new Expression').
+			 title: 'Modify Expression').
 
 	^ aSelectedExpression
 ]
