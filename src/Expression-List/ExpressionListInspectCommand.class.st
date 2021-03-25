@@ -1,11 +1,11 @@
 Class {
-	#name : #ExpressionInspectCommand,
+	#name : #ExpressionListInspectCommand,
 	#superclass : #ExpressionListCommand,
 	#category : #'Expression-List'
 }
 
 { #category : #converting }
-ExpressionInspectCommand >> asSpecCommand [
+ExpressionListInspectCommand >> asSpecCommand [
 
 	^ super asSpecCommand
 		  iconName: #smallInspectIt;
@@ -14,7 +14,7 @@ ExpressionInspectCommand >> asSpecCommand [
 ]
 
 { #category : #testing }
-ExpressionInspectCommand >> canBeExecuted [
+ExpressionListInspectCommand >> canBeExecuted [
 
 	" we can inspect only selected expression"
 
@@ -22,13 +22,13 @@ ExpressionInspectCommand >> canBeExecuted [
 ]
 
 { #category : #initialization }
-ExpressionInspectCommand >> execute [
+ExpressionListInspectCommand >> execute [
 
 	self selectedExpression inspect
 ]
 
 { #category : #initialization }
-ExpressionInspectCommand >> initialize [
+ExpressionListInspectCommand >> initialize [
 
 	super initialize.
 	self
