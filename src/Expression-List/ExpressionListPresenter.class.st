@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'listExpressions',
 		'table',
-		'toolbar'
+		'toolbar',
+		'inspector'
 	],
 	#category : #'Expression-List'
 }
@@ -17,7 +18,8 @@ ExpressionListPresenter class >> buildCommandsGroupWith: presenter forRoot: root
 		register: (ExpressionListRemoveCommand forSpec context: presenter);
 		register: (ExpressionListEvaluateCommand forSpec context: presenter);
 		register: (ExpressionListInspectCommand forSpec context: presenter);
-		register: (ExpressionListModifyCommand forSpec context: presenter)
+		register: (ExpressionListModifyCommand forSpec context: presenter);
+		register:(ExpressionListToggleAutoEvaluateCommand forSpec context: presenter)
 ]
 
 { #category : #specs }
@@ -27,6 +29,7 @@ ExpressionListPresenter class >> defaultSpec [
 		  add: #toolbar
 			withConstraints:[:constraints| constraints height: self toolbarHeight + 5]; 
 		  add: #table;
+		  add: #inspector; 
 		  yourself
 ]
 
@@ -57,13 +60,23 @@ ExpressionListPresenter >> buildToolBar [
 { #category : #initialization }
 ExpressionListPresenter >> initializePresenters [
 
-	table:= self newTable. 
-	toolbar:= self buildToolBar. 
-	table 
-		addColumn: (SpStringTableColumn title: 'Expression' evaluated:#expression);
-		addColumn: (SpStringTableColumn title: 'Result' evaluated:[:e| e result printString]).
-	table contextMenu: [ self rootCommandsGroup beRoot asMenuPresenter ]. 
-	table items: listExpressions expressionList. 	
+	table := self newTable.
+	toolbar := self buildToolBar.
+	inspector := nil inspectionRaw.
+	inspector owner: self.
+	listExpressions := ExpressionList new.
+	table
+		addColumn:
+			(SpStringTableColumn title: 'Expression' evaluated: #expression);
+		addColumn: (SpStringTableColumn
+				 title: 'Result'
+				 evaluated: [ :e | e result printString ]);
+		addColumn: (SpStringTableColumn
+				 title: 'Auto-Evalute'
+				 evaluated: [ :e | e autoEvaluate printString ]).
+	table contextMenu: [ self rootCommandsGroup beRoot asMenuPresenter ].
+	table selection whenChangedDo: [ self onTableSelectionChanged ].
+	table items: listExpressions expressionList
 ]
 
 { #category : #initialization }
@@ -83,6 +96,11 @@ ExpressionListPresenter >> isExpressionSelected [
 { #category : #accessing }
 ExpressionListPresenter >> listExpressions [
 	^ listExpressions.
+]
+
+{ #category : #accessing }
+ExpressionListPresenter >> listExpressions: aList [
+	listExpressions := aList.
 ]
 
 { #category : #'as yet unclassified' }
@@ -110,6 +128,12 @@ ExpressionListPresenter >> newExpression [
 		  yourself
 ]
 
+{ #category : #'as yet unclassified' }
+ExpressionListPresenter >> onTableSelectionChanged [
+
+	self updateInspector
+]
+
 { #category : #testing }
 ExpressionListPresenter >> selectExpression [
 
@@ -120,6 +144,11 @@ ExpressionListPresenter >> selectExpression [
 ExpressionListPresenter >> setModelBeforeInitialization: anExpressionList [
 	super setModelBeforeInitialization: anExpressionList. 
 	listExpressions := anExpressionList.  	
+]
+
+{ #category : #'as yet unclassified' }
+ExpressionListPresenter >> updateInspector [ 
+	self isExpressionSelected ifTrue:[ inspector model: self selectExpression result]. 
 ]
 
 { #category : #'as yet unclassified' }

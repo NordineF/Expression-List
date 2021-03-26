@@ -136,3 +136,10 @@ ExpressionList >> removeExpression: anExpression [
 			argument: anExpression ].
 	expressionList remove: anExpression
 ]
+
+{ #category : #'as yet unclassified' }
+ExpressionList >> toggleAutoEvaluateExpression: anExpression [ 
+
+	anExpression autoEvaluate: anExpression autoEvaluate not. 
+	
+]
