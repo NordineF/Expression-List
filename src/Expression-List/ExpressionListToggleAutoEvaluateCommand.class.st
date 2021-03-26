@@ -26,7 +26,6 @@ ExpressionListToggleAutoEvaluateCommand >> execute [
 
 	self expressionList toggleAutoEvaluateExpression: self selectedExpression.
 	self selectedExpression autoEvaluate ifTrue:[ self expressionList evaluateExpression: self selectedExpression]. 
-	 
 	self expressionListPresenter updateView
 ]
 

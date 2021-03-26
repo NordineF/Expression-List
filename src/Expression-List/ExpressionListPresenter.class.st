@@ -140,6 +140,12 @@ ExpressionListPresenter >> selectExpression [
 	^ table selection selectedItem. 
 ]
 
+{ #category : #testing }
+ExpressionListPresenter >> selectExpression: anItem [
+
+	table selectItem: anItem
+]
+
 { #category : #initialization }
 ExpressionListPresenter >> setModelBeforeInitialization: anExpressionList [
 	super setModelBeforeInitialization: anExpressionList. 
@@ -153,6 +159,11 @@ ExpressionListPresenter >> updateInspector [
 
 { #category : #'as yet unclassified' }
 ExpressionListPresenter >> updateView [
-	table items: listExpressions expressionList. 
-	
+
+	| storeSelectedExpression |
+	self flag:
+		'Change way we give back the selectedExpression after updateView.'.
+	storeSelectedExpression := self selectExpression.
+	table items: listExpressions expressionList.
+	self selectExpression: storeSelectedExpression
 ]
