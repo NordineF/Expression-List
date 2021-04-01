@@ -102,7 +102,7 @@ ExpressionList >> findExpressionWithText: aText [
 ExpressionList >> getExpressionAtIndex: anIndex [
 
 	anIndex isInteger ifFalse: [ 
-		ExpressionListNegativeIndexException 
+		ExpressionListNonIntegerException 
 			signal: ExpressionListNonIntegerException message
 			argument: anIndex ].
 	anIndex > 0 ifFalse: [ 
