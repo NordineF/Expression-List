@@ -152,6 +152,12 @@ ExpressionListPresenter >> setModelBeforeInitialization: anExpressionList [
 	listExpressions := anExpressionList.  	
 ]
 
+{ #category : #accessing }
+ExpressionListPresenter >> table [
+
+	^ table
+]
+
 { #category : #'as yet unclassified' }
 ExpressionListPresenter >> updateInspector [ 
 	self isExpressionSelected ifTrue:[ inspector model: self selectExpression result]. 
