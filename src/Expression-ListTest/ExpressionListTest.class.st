@@ -4,16 +4,38 @@ Class {
 	#category : #'Expression-ListTest'
 }
 
+{ #category : #tests }
+ExpressionListTest >> testAddAfter [
+
+	| expressionList addedFirstExpression addedSecondExpression addedAfterFirstExpression |
+	addedFirstExpression := Expression expression: '1+2'.
+	addedSecondExpression := Expression expression: '10'.
+	addedAfterFirstExpression := Expression expression: '10'.
+	expressionList := ExpressionList new.
+	expressionList addExpression: addedFirstExpression.
+	self assert: (expressionList contains: addedFirstExpression).
+	self assert: (expressionList getExpressionAtIndex: 1) equals: addedFirstExpression. " FIRST ELEMENT IS addedFirstExpression"
+	expressionList addExpression: addedSecondExpression.
+	self assert: (expressionList contains: addedSecondExpression).
+	self assert: (expressionList getExpressionAtIndex: 2) equals: addedSecondExpression. " SECOND ELEMENT IS addedSecondExpression"
+	expressionList
+		addExpression: addedAfterFirstExpression
+		after: addedFirstExpression.
+	self assert: (expressionList contains: addedAfterFirstExpression).
+	self assert: (expressionList getExpressionAtIndex: 2) equals: addedAfterFirstExpression . " SECOND ELEMENT IS addedAfterFirstExpression"
+	self assert: (expressionList getExpressionAtIndex: 3) equals: addedSecondExpression " THIRD ELEMENT IS addedSecondElement"
+]
+
 { #category : #running }
 ExpressionListTest >> testAddExpression [
 
 	| expressionList addedExpression |
 	addedExpression := Expression expression: '1+2'.
 	expressionList := ExpressionList new.
-	self assert: expressionList isEmpty equals: true.
+	self assert: expressionList isEmpty.
 	expressionList addExpression: addedExpression.
-	self assert: expressionList isEmpty equals: false.
-	self assert: (expressionList contains: addedExpression) equals: true
+	self deny: expressionList isEmpty.
+	self assert: (expressionList contains: addedExpression).
 	
 ]
 
@@ -24,7 +46,7 @@ ExpressionListTest >> testAddExpressionFromString [
 	expressionList := ExpressionList new.
 	self assert: expressionList isEmpty equals: true.
 	expressionList addExpressionFromString: '1+2'.
-	self assert: expressionList isEmpty equals: false.
+	self deny: expressionList isEmpty.
 	self assert: expressionList getSize equals: 1.
 	self
 		assert: expressionList expressionList first expression
@@ -43,6 +65,21 @@ ExpressionListTest >> testEvaluateExpression [
 	
 ]
 
+{ #category : #running }
+ExpressionListTest >> testGetSize [
+
+	| expressionList addedExpression |
+	addedExpression := Expression expression: '1+2'.
+	expressionList := ExpressionList new.
+	self assert: expressionList isEmpty equals: true.
+	expressionList addExpression: addedExpression.
+	self deny: expressionList isEmpty.
+	self assert: (expressionList contains: addedExpression).
+	self assert: expressionList getSize equals:1.
+	expressionList removeExpression: addedExpression. 
+	self assert: expressionList getSize equals:0.  
+]
+
 { #category : #tests }
 ExpressionListTest >> testRemoveExpression [
 
@@ -50,15 +87,15 @@ ExpressionListTest >> testRemoveExpression [
 	removedExpression := Expression expression: '1+2'.
 	notContainExpression := Expression expression: '3'.
 	expressionList := ExpressionList new.
-	self assert: expressionList isEmpty equals: true.
+	self assert: expressionList isEmpty.
 	self
 		should: [ expressionList removeExpression: removedExpression ]
-		raise: EmptyExpressionListException.
+		raise: ExpressionListEmptyException.
 	expressionList addExpression: removedExpression.
-	self assert: expressionList isEmpty equals: false.
+	self deny: expressionList isEmpty.
 	self
 		should: [ expressionList removeExpression: notContainExpression ]
-		raise: NotContainExpressionException.
+		raise: ExpressionListNotContainExpressionException.
 	expressionList removeExpression: removedExpression.
-	self assert: expressionList isEmpty equals: true
+	self assert: expressionList isEmpty
 ]
