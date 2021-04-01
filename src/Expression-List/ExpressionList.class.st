@@ -1,3 +1,29 @@
+"
+Please comment me using the following template inspired by Class Responsibility Collaborator (CRC) design:
+
+For the Class part:  State a one line summary. For example, ""I represent a paragraph of text"".
+
+For the Responsibility part: Three sentences about my main responsibilities - what I do, what I know.
+
+For the Collaborators Part: State my main collaborators and one line about how I interact with them. 
+
+Public API and Key Messages
+
+- message one   
+- message two 
+- (for bonus points) how to create instances.
+
+   One simple example is simply gorgeous.
+
+Internal Representation and Key Implementation Points.
+
+    Instance Variables
+	evaluationContext:		<Object>
+	expressionList:		<Object>
+
+
+    Implementation Points
+"
 Class {
 	#name : #ExpressionList,
 	#superclass : #Object,
@@ -27,15 +53,16 @@ ExpressionList >> addExpression: anExpression after: otherExpression [
 
 { #category : #initialization }
 ExpressionList >> addExpression: anExpression result: aResult [
+
 	" 	add an expression with result into our expressions list.
 	"
+
 	| addedExpression |
-	addedExpression := Expression new. 
-	addedExpression expression: anExpression. 
-	addedExpression result: aResult. 
-	
-	expressionList add: addedExpression. 
-	
+	addedExpression := Expression new.
+	addedExpression expression: anExpression.
+	addedExpression result: aResult.
+
+	expressionList add: addedExpression
 ]
 
 { #category : #adding }
@@ -46,20 +73,27 @@ ExpressionList >> addExpressionFromString: aString [
 
 { #category : #comparing }
 ExpressionList >> contains: anExpression [
-	" allows us to know if an expression is present or not in our expressionList"
-	
-	^ expressionList includes: anExpression. 
+
+	"	allows us to know if an expression is present or not in our expressionList
+		
+		@param:
+		anExpression				
+	"
+
+	^ expressionList includes: anExpression
 ]
 
 { #category : #comparing }
 ExpressionList >> contains: anExpression result: aResult [
+
 	" allows us to know if an expression is present or not in our expressionList"
-	|checkExpression|
-	checkExpression := Expression new. 
-	checkExpression expression: anExpression.  
-	checkExpression result: aResult. 
-	
-	^ expressionList includes: anExpression. 
+
+	| checkExpression |
+	checkExpression := Expression new.
+	checkExpression expression: anExpression.
+	checkExpression result: aResult.
+
+	^ expressionList includes: anExpression
 ]
 
 { #category : #'as yet unclassified' }
@@ -78,18 +112,21 @@ ExpressionList >> evaluateExpression: anExpression [
 ]
 
 { #category : #accessing }
-ExpressionList >> evaluationContext: aContext [ 
-	evaluationContext:= aContext.
+ExpressionList >> evaluationContext: aContext [
+
+	evaluationContext := aContext
 ]
 
 { #category : #initialization }
 ExpressionList >> expressionList [
-	^ expressionList. 
+
+	^ expressionList
 ]
 
 { #category : #initialization }
 ExpressionList >> expressionList: anExpressionList [
-	expressionList := anExpressionList.
+
+	expressionList := anExpressionList
 ]
 
 { #category : #'finding/searching' }
@@ -120,8 +157,9 @@ ExpressionList >> getExpressionAtIndex: anIndex [
 ]
 
 { #category : #size }
-ExpressionList >> getSize [ 
-	^ expressionList size. 
+ExpressionList >> getSize [
+
+	^ expressionList size
 ]
 
 { #category : #initialization }
@@ -134,18 +172,24 @@ ExpressionList >> initialize [
 
 { #category : #initialization }
 ExpressionList >> isEmpty [
-"	Allows us to know if the expressionList is empty 
+
+	"	Allows us to know if the expressionList is empty 
 	
 	@return
 	boolean 					true if the expressionList is empty, false otherwise. 
-"
-	^ expressionList isEmpty. 
+	"
+
+	^ expressionList isEmpty
 ]
 
 { #category : #initialization }
 ExpressionList >> removeExpression: anExpression [
 
-	"remove an expression in our expressionList"
+	"	Allows us to remove an expression in our expressionList
+		
+		@param:
+		anExpression 			the expression to remove  
+	"
 
 	self isEmpty ifTrue: [ 
 		ExpressionListEmptyException
@@ -159,8 +203,13 @@ ExpressionList >> removeExpression: anExpression [
 ]
 
 { #category : #'as yet unclassified' }
-ExpressionList >> toggleAutoEvaluateExpression: anExpression [ 
+ExpressionList >> toggleAutoEvaluateExpression: anExpression [
 
-	anExpression autoEvaluate: anExpression autoEvaluate not. 
-	
+	"	Allows us to set an auto evaluate an Expression after each time the context change
+		
+		@param:
+		anExpression				the expression we want to auto evaluate
+	"
+
+	anExpression autoEvaluate: anExpression autoEvaluate not
 ]
