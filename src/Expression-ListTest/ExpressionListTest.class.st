@@ -65,6 +65,46 @@ ExpressionListTest >> testEvaluateExpression [
 	
 ]
 
+{ #category : #tests }
+ExpressionListTest >> testGetExpressionAtIndex [
+
+	| expressionList addedFirstExpression addedSecondExpression addedThirdExpression |
+	addedFirstExpression := Expression expression: '1+2'.
+	addedSecondExpression := Expression expression: '10'.
+	addedThirdExpression := Expression expression: '10'.
+	expressionList := ExpressionList new.
+	self assert: expressionList isEmpty.
+	self
+		should: [ "TEST WHEN EMPTY" expressionList getExpressionAtIndex: 1 ]
+		raise: ExpressionListEmptyException.
+	self
+		should: [ " TEST WHEN NEGATIVE INDEX" 
+		expressionList getExpressionAtIndex: -1 ]
+		raise: ExpressionListNegativeIndexException.
+	expressionList addExpression: addedFirstExpression.
+	self
+		assert: (expressionList getExpressionAtIndex: 1)
+		equals: addedFirstExpression.
+	expressionList addExpression: addedSecondExpression.
+	self
+		assert: (expressionList getExpressionAtIndex: 2)
+		equals: addedSecondExpression.
+
+	expressionList addExpression: addedThirdExpression.
+	self
+		assert: (expressionList getExpressionAtIndex: 3)
+		equals: addedThirdExpression.
+	self assert: expressionList getSize equals: 3.
+	self
+		should: [ " TEST WHEN INDEX OUT OF BOUNDS" 
+			expressionList getExpressionAtIndex: 4 ]
+		raise: ExpressionListIndexOutOfBoundsException.
+	self
+		should: [ " TEST WHEN INDEX OUT OF BOUNDS" 
+			expressionList getExpressionAtIndex: #a ]
+		raise: ExpressionListNonIntegerException
+]
+
 { #category : #running }
 ExpressionListTest >> testGetSize [
 
