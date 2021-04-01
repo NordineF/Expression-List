@@ -98,6 +98,27 @@ ExpressionList >> findExpressionWithText: aText [
 	
 ]
 
+{ #category : #'as yet unclassified' }
+ExpressionList >> getExpressionAtIndex: anIndex [
+
+	anIndex isInteger ifFalse: [ 
+		ExpressionListNegativeIndexException 
+			signal: ExpressionListNonIntegerException message
+			argument: anIndex ].
+	anIndex > 0 ifFalse: [ 
+		ExpressionListNegativeIndexException
+			signal: ExpressionListNegativeIndexException message
+			argument: anIndex ].
+	self isEmpty ifTrue: [ 
+		ExpressionListEmptyException  signal: ExpressionListEmptyException message argument: self getSize ].
+	anIndex > self getSize ifTrue: [ 
+		ExpressionListIndexOutOfBoundsException
+			signal: ExpressionListIndexOutOfBoundsException message
+			argument: self getSize ].
+		
+	^ expressionList at: anIndex
+]
+
 { #category : #size }
 ExpressionList >> getSize [ 
 	^ expressionList size. 
@@ -127,12 +148,12 @@ ExpressionList >> removeExpression: anExpression [
 	"remove an expression in our expressionList"
 
 	self isEmpty ifTrue: [ 
-		EmptyExpressionListException
+		ExpressionListEmptyException
 			signal: EmptyException message
 			argument: self getSize ].
 	(self contains: anExpression) ifFalse: [ 
-		NotContainExpressionException
-			signal: NotContainExpressionException message
+		ExpressionListNotContainExpressionException
+			signal: ExpressionListNotContainExpressionException message
 			argument: anExpression ].
 	expressionList remove: anExpression
 ]
