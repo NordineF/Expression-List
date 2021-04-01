@@ -4,8 +4,21 @@ Class {
 	#category : #'Expression-ListTest'
 }
 
+{ #category : #running }
+ExpressionListTest >> testAddExpression [
+
+	| expressionList addedExpression |
+	addedExpression := Expression expression: '1+2'.
+	expressionList := ExpressionList new.
+	self assert: expressionList isEmpty.
+	expressionList addExpression: addedExpression.
+	self deny: expressionList isEmpty.
+	self assert: (expressionList contains: addedExpression).
+	
+]
+
 { #category : #tests }
-ExpressionListTest >> testAddAfter [
+ExpressionListTest >> testAddExpressionAfter [
 
 	| expressionList addedFirstExpression addedSecondExpression addedAfterFirstExpression |
 	addedFirstExpression := Expression expression: '1+2'.
@@ -24,19 +37,6 @@ ExpressionListTest >> testAddAfter [
 	self assert: (expressionList contains: addedAfterFirstExpression).
 	self assert: (expressionList getExpressionAtIndex: 2) equals: addedAfterFirstExpression . " SECOND ELEMENT IS addedAfterFirstExpression"
 	self assert: (expressionList getExpressionAtIndex: 3) equals: addedSecondExpression " THIRD ELEMENT IS addedSecondElement"
-]
-
-{ #category : #running }
-ExpressionListTest >> testAddExpression [
-
-	| expressionList addedExpression |
-	addedExpression := Expression expression: '1+2'.
-	expressionList := ExpressionList new.
-	self assert: expressionList isEmpty.
-	expressionList addExpression: addedExpression.
-	self deny: expressionList isEmpty.
-	self assert: (expressionList contains: addedExpression).
-	
 ]
 
 { #category : #running }
