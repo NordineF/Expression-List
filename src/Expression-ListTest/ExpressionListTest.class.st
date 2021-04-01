@@ -20,23 +20,38 @@ ExpressionListTest >> testAddExpression [
 { #category : #tests }
 ExpressionListTest >> testAddExpressionAfter [
 
-	| expressionList addedFirstExpression addedSecondExpression addedAfterFirstExpression |
+	| expressionList addedFirstExpression addedSecondExpression addedAfterFirstExpression exceptionAddedExpression |
 	addedFirstExpression := Expression expression: '1+2'.
 	addedSecondExpression := Expression expression: '10'.
 	addedAfterFirstExpression := Expression expression: '10'.
+	exceptionAddedExpression := Expression expression: '15'.
 	expressionList := ExpressionList new.
 	expressionList addExpression: addedFirstExpression.
 	self assert: (expressionList contains: addedFirstExpression).
-	self assert: (expressionList getExpressionAtIndex: 1) equals: addedFirstExpression. " FIRST ELEMENT IS addedFirstExpression"
+	self
+		assert: (expressionList getExpressionAtIndex: 1)
+		equals: addedFirstExpression. " FIRST ELEMENT IS addedFirstExpression"
 	expressionList addExpression: addedSecondExpression.
 	self assert: (expressionList contains: addedSecondExpression).
-	self assert: (expressionList getExpressionAtIndex: 2) equals: addedSecondExpression. " SECOND ELEMENT IS addedSecondExpression"
+	self
+		assert: (expressionList getExpressionAtIndex: 2)
+		equals: addedSecondExpression. " SECOND ELEMENT IS addedSecondExpression"
 	expressionList
 		addExpression: addedAfterFirstExpression
 		after: addedFirstExpression.
 	self assert: (expressionList contains: addedAfterFirstExpression).
-	self assert: (expressionList getExpressionAtIndex: 2) equals: addedAfterFirstExpression . " SECOND ELEMENT IS addedAfterFirstExpression"
-	self assert: (expressionList getExpressionAtIndex: 3) equals: addedSecondExpression " THIRD ELEMENT IS addedSecondElement"
+	self
+		assert: (expressionList getExpressionAtIndex: 2)
+		equals: addedAfterFirstExpression. " SECOND ELEMENT IS addedAfterFirstExpression"
+	self
+		assert: (expressionList getExpressionAtIndex: 3)
+		equals: addedSecondExpression. " THIRD ELEMENT IS addedSecondElement"
+	self
+		should: [ 
+			expressionList
+				addExpression: exceptionAddedExpression
+				after: (Expression expression: 'notInExpressionList') ]
+		raise: ExpressionListNotContainExpressionException " FIRST ELEMENT IS addedFirstExpression"
 ]
 
 { #category : #running }

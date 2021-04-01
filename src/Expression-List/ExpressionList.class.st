@@ -44,11 +44,19 @@ ExpressionList >> addExpression: anExpression [
 
 { #category : #initialization }
 ExpressionList >> addExpression: anExpression after: otherExpression [
+
 	" 	add an expression with result into our expressions list.
+		
+		@params:
+		anExpression				expression we want to add inside our expressionList after otherExpression which is already present in our expressionList
+		otherExpression			
 	"
 
-	expressionList add: anExpression after:otherExpression. 
-	
+	(self contains: otherExpression) ifFalse: [ 
+		ExpressionListNotContainExpressionException
+			signal: ExpressionListNotContainExpressionException message
+			argument: anExpression ].
+	expressionList add: anExpression after: otherExpression
 ]
 
 { #category : #initialization }
