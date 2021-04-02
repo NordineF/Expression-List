@@ -69,6 +69,19 @@ ExpressionListTest >> testAddExpressionFromString [
 ]
 
 { #category : #tests }
+ExpressionListTest >> testContains [
+	| listExpressions addedExpression notInExpressionListExpression |	
+	
+	addedExpression := Expression expression: '1+2'. 
+	notInExpressionListExpression := Expression expression: 'Not in list'. 
+	listExpressions := ExpressionList new. 
+	listExpressions addExpression: addedExpression. 
+	self assert: (listExpressions contains: addedExpression). 
+	self deny: (listExpressions contains: notInExpressionListExpression ). 
+	
+]
+
+{ #category : #tests }
 ExpressionListTest >> testEvaluateExpression [
 
 	| expr exprList |
