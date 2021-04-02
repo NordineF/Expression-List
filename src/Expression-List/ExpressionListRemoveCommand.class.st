@@ -25,6 +25,15 @@ ExpressionListRemoveCommand >> canBeExecuted [
 ExpressionListRemoveCommand >> execute [
 
 	self expressionList removeExpression: self selectedExpression.
+	self expressionListPresenter selectExpression:
+		(self expressionList isEmpty
+			 ifTrue: [ nil ]
+			 ifFalse: [ 
+				 self expressionListPresenter table selection selectedIndex = 1 " if it's the first element we want to remove and our list is not empty we cannot decrease the index of selected expression"
+					 ifTrue: [ self expressionList getExpressionAtIndex: 1 ] " so we put it a index 1 <- the new first expression in our table"
+					 ifFalse: [ 
+						 self expressionList getExpressionAtIndex:
+							 self expressionListPresenter table selection selectedIndex - 1 ] ]). " otherwise we decrease the index of selected expression."
 	self expressionListPresenter updateView
 ]
 
