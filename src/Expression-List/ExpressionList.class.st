@@ -59,20 +59,6 @@ ExpressionList >> addExpression: anExpression after: otherExpression [
 	expressionList add: anExpression after: otherExpression
 ]
 
-{ #category : #initialization }
-ExpressionList >> addExpression: anExpression result: aResult [
-
-	" 	add an expression with result into our expressions list.
-	"
-
-	| addedExpression |
-	addedExpression := Expression new.
-	addedExpression expression: anExpression.
-	addedExpression result: aResult.
-
-	expressionList add: addedExpression
-]
-
 { #category : #adding }
 ExpressionList >> addExpressionFromString: aString [
 
@@ -86,21 +72,8 @@ ExpressionList >> contains: anExpression [
 		
 		@param:
 		anExpression				
-	"
-
-	^ expressionList includes: anExpression
-]
-
-{ #category : #comparing }
-ExpressionList >> contains: anExpression result: aResult [
-
-	" allows us to know if an expression is present or not in our expressionList"
-
-	| checkExpression |
-	checkExpression := Expression new.
-	checkExpression expression: anExpression.
-	checkExpression result: aResult.
-
+	"	
+		
 	^ expressionList includes: anExpression
 ]
 
@@ -135,12 +108,6 @@ ExpressionList >> expressionList [
 ExpressionList >> expressionList: anExpressionList [
 
 	expressionList := anExpressionList
-]
-
-{ #category : #'finding/searching' }
-ExpressionList >> findExpressionWithText: aText [
-	^ expressionList select:[ :e| e hasMatchingText:aText]. 
-	
 ]
 
 { #category : #'as yet unclassified' }
