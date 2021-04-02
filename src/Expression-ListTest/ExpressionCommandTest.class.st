@@ -37,7 +37,7 @@ ExpressionCommandTest >> testEvaluateExpression [
 
 { #category : #tests }
 ExpressionCommandTest >> testRemoveExpression [
-	
+
 	| presenter addedExpression addedSecondExpression |
 	presenter := ExpressionListPresenter new.
 	addedExpression := Expression expression: '1+2'.
@@ -46,6 +46,9 @@ ExpressionCommandTest >> testRemoveExpression [
 	presenter listExpressions addExpression: addedSecondExpression.
 	self assert: presenter listExpressions getSize equals: 2.
 	presenter table selectIndex: 1.
-	(ExpressionListRemoveCommand  new context: presenter) execute.
-	self assert: presenter listExpressions getSize equals: 1
+	(ExpressionListRemoveCommand new context: presenter) execute.
+	self assert: presenter listExpressions getSize equals: 1.
+	self
+		assert: (presenter listExpressions getExpressionAtIndex: 1)
+		equals: addedSecondExpression
 ]

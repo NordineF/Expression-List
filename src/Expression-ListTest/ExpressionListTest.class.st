@@ -126,7 +126,7 @@ ExpressionListTest >> testGetSize [
 	| expressionList addedExpression |
 	addedExpression := Expression expression: '1+2'.
 	expressionList := ExpressionList new.
-	self assert: expressionList isEmpty equals: true.
+	self assert: expressionList isEmpty.
 	expressionList addExpression: addedExpression.
 	self deny: expressionList isEmpty.
 	self assert: (expressionList contains: addedExpression).

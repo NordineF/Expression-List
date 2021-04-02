@@ -25,7 +25,7 @@ ExpressionListAddCommand >> execute [
 				after: self selectedExpression ]
 		ifFalse: [ self expressionList addExpression: expression ].
 	self expressionListPresenter updateView.
-	self expressionListPresenter selectExpression: expression. 
+	self expressionListPresenter selectExpression: expression
 ]
 
 { #category : #initialization }
