@@ -5,7 +5,8 @@ Class {
 		'listExpressions',
 		'table',
 		'toolbar',
-		'inspector'
+		'inspector',
+		'isTest'
 	],
 	#category : #'Expression-List'
 }
@@ -65,6 +66,7 @@ ExpressionListPresenter >> initializePresenters [
 	inspector := nil inspectionRaw.
 	inspector owner: self.
 	listExpressions := ExpressionList new.
+	self isTest: false. 
 	table
 		addColumn:
 			(SpStringTableColumn title: 'Expression' evaluated: #expression);
@@ -94,6 +96,20 @@ ExpressionListPresenter >> isExpressionSelected [
 ]
 
 { #category : #accessing }
+ExpressionListPresenter >> isTest [
+
+
+	^ isTest. 
+]
+
+{ #category : #accessing }
+ExpressionListPresenter >> isTest: aBoolean [ 
+	
+	isTest := aBoolean.
+	
+]
+
+{ #category : #accessing }
 ExpressionListPresenter >> listExpressions [
 	^ listExpressions.
 ]
@@ -116,12 +132,17 @@ ExpressionListPresenter >> modifyExpression: aSelectedExpression [
 
 { #category : #initialization }
 ExpressionListPresenter >> newExpression [
+
 	" Create window to ask user to enter a new Expression."
+
 	| inputExpression |
-	inputExpression := self
-		                 request: 'Enter a new Expression'
-		                 initialAnswer: ''
-		                 title: 'Create new Expression'.
+	inputExpression := self isTest
+		                   ifTrue: [ '1+2' ]
+		                   ifFalse: [ 
+			                   self
+				                   request: 'Enter a new Expression'
+				                   initialAnswer: ''
+				                   title: 'Create new Expression' ].
 	^ Expression new
 		  expression: inputExpression;
 		  result: 'nil';

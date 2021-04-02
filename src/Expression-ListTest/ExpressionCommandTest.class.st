@@ -6,7 +6,9 @@ Class {
 
 { #category : #tests }
 ExpressionCommandTest >> testAddExpression [
-	
+
+	" add static input for test, and class variable to see if we are in test or not in AddCommand class"
+
 	| presenter addedExpression addedSecondExpression |
 	presenter := ExpressionListPresenter new.
 	addedExpression := Expression expression: '1+2'.
@@ -15,7 +17,8 @@ ExpressionCommandTest >> testAddExpression [
 	presenter listExpressions addExpression: addedSecondExpression.
 	self assert: presenter listExpressions getSize equals: 2.
 	presenter table selectIndex: 1.
-	(ExpressionListAddCommand  new context: presenter) execute.
+	presenter isTest: true.
+	(ExpressionListAddCommand new context: presenter) execute.
 	self assert: presenter listExpressions getSize equals: 3
 ]
 
