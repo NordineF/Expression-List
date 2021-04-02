@@ -8,7 +8,7 @@ Class {
 ExpressionListToggleAutoEvaluateCommand >> asSpecCommand [
 
 	^ super asSpecCommand
-		  iconName: #github;
+		  iconName: #glamorousRefresh;
 		  shortcutKey: $z meta;
 		  yourself
 ]
