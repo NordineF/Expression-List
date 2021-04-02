@@ -80,14 +80,29 @@ ExpressionList >> contains: anExpression [
 { #category : #'as yet unclassified' }
 ExpressionList >> evaluateExpression: anExpression [
 
-	self flag: 'dans failBlock mettre une exception'.
+	"	Allows us to evaluate the result of an expression in our expressionList
+		
+		@param:
+		anExpression 				an Expression present in our expressionList
+		
+		@throws:
+		ExpressionListNotContainExpressionException		anExpression is not present in our current expressionList. 
+		
+		@return:
+		anExpression result 		evaluted result of anExpression. 
+			
+	"
 
+	(self contains: anExpression) ifFalse: [ 
+		ExpressionListNotContainExpressionException
+			signal: ExpressionListNotContainExpressionException message
+			argument: anExpression ].
 	anExpression result: (evaluationContext receiver class compiler
 			 source: anExpression expression readStream;
 			 context: evaluationContext;
 			 receiver: evaluationContext receiver;
 			 requestor: self;
-			 failBlock: [ nil ];
+			 failBlock: [ ExpressionListEvaluateException signal: ExpressionListEvaluateException message argument: anExpression ];
 			 evaluate).
 	^ anExpression result
 ]
@@ -113,8 +128,17 @@ ExpressionList >> expressionList: anExpressionList [
 { #category : #'as yet unclassified' }
 ExpressionList >> getExpressionAtIndex: anIndex [
 
+	"	Allows us to get an expression by is index in our expressionList
+		
+		@param:
+		anIndex 					the index, must be an integer. 
+		
+		@return:
+		anExpression 			the expression which is at anIndex in our expressionList. 
+	"
+
 	anIndex isInteger ifFalse: [ 
-		ExpressionListNonIntegerException 
+		ExpressionListNonIntegerException
 			signal: ExpressionListNonIntegerException message
 			argument: anIndex ].
 	anIndex > 0 ifFalse: [ 
@@ -122,27 +146,40 @@ ExpressionList >> getExpressionAtIndex: anIndex [
 			signal: ExpressionListNegativeIndexException message
 			argument: anIndex ].
 	self isEmpty ifTrue: [ 
-		ExpressionListEmptyException  signal: ExpressionListEmptyException message argument: self getSize ].
+		ExpressionListEmptyException
+			signal: ExpressionListEmptyException message
+			argument: self getSize ].
 	anIndex > self getSize ifTrue: [ 
 		ExpressionListIndexOutOfBoundsException
 			signal: ExpressionListIndexOutOfBoundsException message
 			argument: self getSize ].
-		
+
 	^ expressionList at: anIndex
 ]
 
 { #category : #size }
 ExpressionList >> getSize [
 
+	"	Allows us to get expressionList size. 
+		
+		@return:
+		size 				the expressionList current size.  
+	"
+
 	^ expressionList size
 ]
 
 { #category : #initialization }
 ExpressionList >> initialize [
-	"changer le nom de la classe ExpressionList"
+
+	"	changer le nom de la classe ExpressionList
+		Initialize the ExpressionList 
+		Each ExpressionList object start with an empty OrderedCollection. 
+		
+	"
+
 	super initialize.
-	expressionList := OrderedCollection new. 
-	
+	expressionList := OrderedCollection new
 ]
 
 { #category : #initialization }
@@ -150,8 +187,8 @@ ExpressionList >> isEmpty [
 
 	"	Allows us to know if the expressionList is empty 
 	
-	@return
-	boolean 					true if the expressionList is empty, false otherwise. 
+		@return
+		boolean 					true if the expressionList is empty, false otherwise. 
 	"
 
 	^ expressionList isEmpty
@@ -168,7 +205,7 @@ ExpressionList >> removeExpression: anExpression [
 
 	self isEmpty ifTrue: [ 
 		ExpressionListEmptyException
-			signal: EmptyException message
+			signal: ExpressionListEmptyException message
 			argument: self getSize ].
 	(self contains: anExpression) ifFalse: [ 
 		ExpressionListNotContainExpressionException
