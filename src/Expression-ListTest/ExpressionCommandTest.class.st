@@ -50,5 +50,8 @@ ExpressionCommandTest >> testRemoveExpression [
 	self assert: presenter listExpressions getSize equals: 1.
 	self
 		assert: (presenter listExpressions getExpressionAtIndex: 1)
-		equals: addedSecondExpression
+		equals: addedSecondExpression.
+	presenter table selectIndex: 1.
+	(ExpressionListRemoveCommand new context: presenter) execute.
+	self assert: presenter listExpressions isEmpty
 ]
