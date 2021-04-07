@@ -175,7 +175,7 @@ ExpressionListPresenter >> selectExpression: anItem [
 { #category : #initialization }
 ExpressionListPresenter >> setModelBeforeInitialization: aModel [
 	
-	super setModelBeforeInitialization: aModel. 
+	debugger := aModel. 
 	listExpressions := ExpressionList new.  
 ]
 
