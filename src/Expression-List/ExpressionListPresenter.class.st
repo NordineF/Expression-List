@@ -191,6 +191,16 @@ ExpressionListPresenter >> updateInspector [
 ]
 
 { #category : #'as yet unclassified' }
+ExpressionListPresenter >> updatePresenter [
+
+	self listExpressions evaluationContext: debugger currentContext.
+	self listExpressions expressionList do: [ :e | 
+		e autoEvaluate ifTrue: [ self listExpressions evaluateExpression: e ] ].
+	self updateInspector.
+	self updateView
+]
+
+{ #category : #'as yet unclassified' }
 ExpressionListPresenter >> updateView [
 
 	| storeSelectedExpression |
