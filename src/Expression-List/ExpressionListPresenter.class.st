@@ -35,11 +35,11 @@ ExpressionListPresenter class >> buildCommandsGroupWith: presenter forRoot: root
 { #category : #specs }
 ExpressionListPresenter class >> defaultSpec [
 
-	^ SpBoxLayout newTopToBottom
-		  add: #toolbar
+	^ SpBoxLayout newVertical
+		  "add: #toolbar
 			withConstraints:[:constraints| constraints height: self toolbarHeight + 5]; 
-		  add: #table;
-		  add: #inspector; 
+		  "add: #table;
+		  add: #inspector;
 		  yourself
 ]
 
