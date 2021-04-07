@@ -91,7 +91,9 @@ ExpressionListPresenter >> initializePresenters [
 				 evaluated: [ :e | e autoEvaluate printString ]).
 	table contextMenu: [ self rootCommandsGroup beRoot asMenuPresenter ].
 	table selection whenChangedDo: [ self onTableSelectionChanged ].
-	table items: listExpressions expressionList
+	table items: listExpressions expressionList.
+	debugger stackTable selection whenChangedDo: [ 
+		self updatePresenter ]
 ]
 
 { #category : #initialization }
