@@ -15,7 +15,7 @@ Class {
 		'table',
 		'toolbar',
 		'inspector',
-		'isTest'
+		'debugger'
 	],
 	#category : #'Expression-List'
 }
@@ -105,20 +105,6 @@ ExpressionListPresenter >> initializeWindow: aWindowPresenter [
 ExpressionListPresenter >> isExpressionSelected [
 	
 	^ table selectedItems isNotEmpty. 
-	
-]
-
-{ #category : #accessing }
-ExpressionListPresenter >> isTest [
-
-
-	^ isTest. 
-]
-
-{ #category : #accessing }
-ExpressionListPresenter >> isTest: aBoolean [ 
-	
-	isTest := aBoolean.
 	
 ]
 
