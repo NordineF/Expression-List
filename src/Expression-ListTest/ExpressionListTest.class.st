@@ -87,6 +87,7 @@ ExpressionListTest >> testEvaluateExpression [
 	| expr exprList |
 	expr := Expression expression: '1+2'.
 	exprList := ExpressionList new.
+	exprList addExpression: expr. 
 	exprList evaluationContext: [  ] asContext.
 	self assert: (exprList evaluateExpression: expr) equals: 3. 
 	self assert: expr result equals:3. 
