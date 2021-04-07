@@ -13,6 +13,11 @@ ExpressionHelpCommand >> asSpecCommand [
 		  yourself
 ]
 
+{ #category : #executing }
+ExpressionHelpCommand >> execute [ 
+
+]
+
 { #category : #initialization }
 ExpressionHelpCommand >> initialize [
 

@@ -1,3 +1,19 @@
+"
+I'm an Exception related to Expression List Error.
+
+Here is classes which inherite from ExpressionListException class:
+	-	ExpressionListEmptyException
+	-	ExpressionListEvaluateException
+	-	ExpressionListIndexOutOfBoundsException
+	-	ExpressionListNegativeIndexException	
+	-	ExpressionListNonIntegerException
+	-	ExpressionListNotContainExpressionException
+	
+Messages:
+	class side: 
+		- message
+		- signal:argument: 
+"
 Class {
 	#name : #ExpressionListException,
 	#superclass : #Error,
