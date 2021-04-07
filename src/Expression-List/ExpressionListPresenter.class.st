@@ -1,6 +1,15 @@
+"
+Class: ExpressionListPresenter
+                                                                                                    
+
+
+
+"
 Class {
 	#name : #ExpressionListPresenter,
 	#superclass : #StPresenter,
+	#traits : 'TStDebuggerExtension',
+	#classTraits : 'TStDebuggerExtension classTrait',
 	#instVars : [
 		'listExpressions',
 		'table',
@@ -54,8 +63,13 @@ ExpressionListPresenter >> buildToolBar [
 		group register: (cmd forSpecContext: self) ].
 	^ group asToolbarPresenterWith: [ :presenter | 
 		  presenter
-			  displayMode: self application toolbarDisplayMode;
-			  addStyle: 'stToolbar' ]
+			  displayMode: self application toolbarDisplayMode]
+]
+
+{ #category : #'debugger extension' }
+ExpressionListPresenter >> debuggerExtensionToolName [
+
+	^ 'ExpressionListPresenter'
 ]
 
 { #category : #initialization }
@@ -66,7 +80,6 @@ ExpressionListPresenter >> initializePresenters [
 	inspector := nil inspectionRaw.
 	inspector owner: self.
 	listExpressions := ExpressionList new.
-	self isTest: false. 
 	table
 		addColumn:
 			(SpStringTableColumn title: 'Expression' evaluated: #expression);
@@ -132,10 +145,14 @@ ExpressionListPresenter >> modifyExpression: aSelectedExpression [
 
 { #category : #initialization }
 ExpressionListPresenter >> newExpression [
-
+	
 	" Create window to ask user to enter a new Expression."
-
+	
 	| inputExpression |
+		self flag:
+		'Bad practice test code and functional code mix.'.
+		self flag: 'change method name TO requestExpression'.
+		
 	inputExpression := self isTest
 		                   ifTrue: [ '1+2' ]
 		                   ifFalse: [ 
@@ -168,9 +185,10 @@ ExpressionListPresenter >> selectExpression: anItem [
 ]
 
 { #category : #initialization }
-ExpressionListPresenter >> setModelBeforeInitialization: anExpressionList [
-	super setModelBeforeInitialization: anExpressionList. 
-	listExpressions := anExpressionList.  	
+ExpressionListPresenter >> setModelBeforeInitialization: aModel [
+	
+	super setModelBeforeInitialization: aModel. 
+	listExpressions := ExpressionList new.  
 ]
 
 { #category : #accessing }
