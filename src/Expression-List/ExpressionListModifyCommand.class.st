@@ -1,3 +1,17 @@
+"
+I represent Modify command. 
+
+When invoked, users can modify a selected expression;
+
+
+
+Public API and Key Messages
+
+- asSpecCommand 	<- define spec (icon, shortkey)
+- canBeExecuted		<- allows us to know if Modify command can be executed
+- execute 	    	<- Modify an expression
+- initialize			<- define name and description. 
+"
 Class {
 	#name : #ExpressionListModifyCommand,
 	#superclass : #ExpressionListCommand,

@@ -1,3 +1,16 @@
+"
+I represent Remove command. 
+
+When invoked, remove a selected expression. 
+
+
+Public API and Key Messages
+
+- asSpecCommand 	<- define spec (icon, shortkey)
+- canBeExecuted		<- allows us to know if Remove command can be executed
+- execute 	    	<- Remove an expression
+- initialize			<- define name and description. 
+"
 Class {
 	#name : #ExpressionListRemoveCommand,
 	#superclass : #ExpressionListCommand,

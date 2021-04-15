@@ -1,3 +1,16 @@
+"
+I represent Inspect command. 
+
+When invoked, users can inspect a selected expression. 
+
+
+Public API and Key Messages
+
+- asSpecCommand 	<- define spec (icon, shortkey)
+- canBeExecuted		<- allows us to know if Inspect command can be executed
+- execute 	    	<- Inspect a selected expression
+- initialize			<- define name and description. 
+"
 Class {
 	#name : #ExpressionListInspectCommand,
 	#superclass : #ExpressionListCommand,

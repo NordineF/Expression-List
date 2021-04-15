@@ -1,3 +1,15 @@
+"
+I represent Add command. 
+
+When invoked, a pop-up appears and the user can enter a new expression.
+
+
+Public API and Key Messages
+
+- asSpecCommand 	<- define spec (icon, shortkey).
+- execute 	    	<- Add an expression.
+- initialize			<- define name and description. 
+"
 Class {
 	#name : #ExpressionListAddCommand,
 	#superclass : #ExpressionListCommand,

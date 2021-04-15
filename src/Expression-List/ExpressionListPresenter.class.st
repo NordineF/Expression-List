@@ -1,8 +1,35 @@
 "
-Class: ExpressionListPresenter
-                                                                                                    
+I represent the expression list debugger plugin presenter. 
+
+Users can interact with me :
+	- can add Expression
+	- can remove an Expression
+	- can auto evaluate an Expression
+	- can modify an Expression
+	- can add an expression from source pane
 
 
+Public API and Key Messages
+-	buildToolBar  					<- Create toolbar with buttons for each command. 
+-	debuggerExtensionToolName 	<- Define debugger plugin name. 
+-	displayOrder					  	<- Use it to integrate our plugin inside debugger.
+-	initializePresenters		 	<-  Initialize the ExpressionListPresenter, initialize toolbar, inspector and table (which contains expressions).
+- 	initializeWindow				<- Initialize Window for shortcut key. 
+-	isExpressionSelected			<- Allows us to know if an Expression is selected. 
+- 	listExpressions					<- getter for listExpressions ( an ExpressionList object which contains all expression). 
+-  listExpressions:				<- setter for listExpression ( an ExpressionList object which contains all expression). 
+-	modifyExpression:				<- called by Modify command, allows us to modify an expression. 
+-	newExpression					<- called by Add command and Add From Selection command, allows us to add a new expression. 
+-  onTableSelectionChanged 		<- update inspector
+-  selectExpression				<- getter to get the selected expression
+-  selectExpression:				<- setter allows us to select an expression
+-  setModelBeforeInitialization <- initialize our model before initialization. 
+-  table 								<- getter for table
+-  updateInspector					<- update inspector
+-  updatePresenter					<- update presenter display
+-  updateView						<- update display
+
+				
 
 "
 Class {
@@ -133,21 +160,16 @@ ExpressionListPresenter >> modifyExpression: aSelectedExpression [
 
 { #category : #initialization }
 ExpressionListPresenter >> newExpression [
-	
+
 	" Create window to ask user to enter a new Expression."
-	
+
 	| inputExpression |
-		self flag:
-		'Bad practice test code and functional code mix.'.
-		self flag: 'change method name TO requestExpression'.
-		
-	inputExpression := self isTest
-		                   ifTrue: [ '1+2' ]
-		                   ifFalse: [ 
-			                   self
-				                   request: 'Enter a new Expression'
-				                   initialAnswer: ''
-				                   title: 'Create new Expression' ].
+	self flag: 'change method name TO requestExpression'.
+
+	inputExpression := self
+		                   request: 'Enter a new Expression'
+		                   initialAnswer: ''
+		                   title: 'Create new Expression'.
 	^ Expression new
 		  expression: inputExpression;
 		  result: 'nil';
@@ -186,8 +208,10 @@ ExpressionListPresenter >> table [
 ]
 
 { #category : #'as yet unclassified' }
-ExpressionListPresenter >> updateInspector [ 
-	self isExpressionSelected ifTrue:[ inspector model: self selectExpression result]. 
+ExpressionListPresenter >> updateInspector [
+	
+	self isExpressionSelected ifTrue: [ 
+		inspector model: self selectExpression result ]
 ]
 
 { #category : #'as yet unclassified' }

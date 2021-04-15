@@ -1,28 +1,44 @@
 "
-Please comment me using the following template inspired by Class Responsibility Collaborator (CRC) design:
+I represent an Expression list. 
 
-For the Class part:  State a one line summary. For example, ""I represent a paragraph of text"".
 
-For the Responsibility part: Three sentences about my main responsibilities - what I do, what I know.
+Contain expression, users can add/remove/modify expression present in an Expression List object. 
 
-For the Collaborators Part: State my main collaborators and one line about how I interact with them. 
+
+
 
 Public API and Key Messages
+- addExpression: 	<- allows us to add an Expression object in our ExpressionList object.
+- addExpression:after:		<- allows us to add an Expression object in our ExpressionList object after another expression present in our ExpressionList.
+- addExpressionFromString: 	    	<- allows us to add an Expression object from a given String object in our ExpressionList object.
+- contains:			<- allows us to know if our ExpressionList contains a given expression.   
+- evaluateExpression:		<- allows us to evaluate an expression.
+- evaluationContext:					<- setter for context. 
+- expressionList					<- getter for expressionList instance variable.
+- expressionList:					<- setter for expressionList instance variable.
+- getExpressionAtIndex:					<- allows us to get an expression at a given index. 
+- getSize					<- getter for expressionList instance variable size. 
+- initialize					<- initialize ExpressionList object. 
+- isEmpty					<- allows us to know if expressionList instance variable is empty. 
+- removeExpression:					<- allows us to remove a given expression. 
+- toggleAutoEvaluateExpression:					<- setter for autoEvaluate instance variable 
 
-- message one   
-- message two 
-- (for bonus points) how to create instances.
+Create :
+```
+|newExpressionList|
+newExpressionList := ExpressionList new. 
+```
 
-   One simple example is simply gorgeous.
+Add:
 
-Internal Representation and Key Implementation Points.
+```
+|newExpression newExpressionList|
+newExpressionList := ExpressionList new.
+newExpression := Expression expression:'1+2'.
+newExpressionList addExpression: newExpression. 
+```
 
-    Instance Variables
-	evaluationContext:		<Object>
-	expressionList:		<Object>
 
-
-    Implementation Points
 "
 Class {
 	#name : #ExpressionList,

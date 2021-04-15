@@ -1,3 +1,37 @@
+"
+I represent an Expression. 
+
+Examples : 
+	- 1+2
+	- 'Expression'
+	- nil
+	
+
+Public API and Key Messages
+- autoEvaluate 	<- getter for autoEvaluate instance variable 
+- autoEvaluate:		<- setter for autoEvaluate instance variable 
+- expression 	    	<- getter for expression instance variable 
+- expression:			<- setter for autoEvaluate instance variable 
+- hasMatchingText:		<- allows us to know if expression contains a given text.
+- result					<- getter for result instance variable 
+- result:					<- setter for autoEvaluate instance variable 
+		
+Create :
+```
+|newExpression|
+newExpression := Expression new. 
+newExpression expression: '1+2'.
+```
+
+Also
+
+```
+|newExpression|
+newExpression := Expression expression:'1+2'.
+```
+
+
+"
 Class {
 	#name : #Expression,
 	#superclass : #Object,

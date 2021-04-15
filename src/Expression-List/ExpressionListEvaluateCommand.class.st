@@ -1,3 +1,17 @@
+"
+I represent Evaluate command. 
+
+When invoked, evaluate the selected expression. 
+
+
+
+Public API and Key Messages
+
+- asSpecCommand 	<- define spec (icon, shortkey)
+- canBeExecuted		<- allows us to know if Evaluate command can be executed
+- execute 	    	<- Evaluate an expression
+- initialize			<- define name and description. 
+"
 Class {
 	#name : #ExpressionListEvaluateCommand,
 	#superclass : #ExpressionListCommand,

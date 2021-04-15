@@ -1,3 +1,15 @@
+"
+I represent the command Help. 
+
+When invoked, the help menu is displayed. 
+
+
+Public API and Key Messages
+
+- asSpecCommand 	<- define spec (icon, shortkey)
+- execute 	    	<- Display help menu
+- initialize			<- define name and description. 
+"
 Class {
 	#name : #ExpressionHelpCommand,
 	#superclass : #ExpressionListCommand,

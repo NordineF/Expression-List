@@ -1,3 +1,16 @@
+"
+I represent Add expression from source pane command. 
+
+Users can add an expression by selecting it from the source code and right-clicking, a menu is displayed an users can select ""New expression from selection"". 
+ 
+
+
+Public API and Key Messages
+
+- asSpecCommand 	<- define spec (icon, shortkey). 
+- execute 	    	<- Add an expression from source pane.
+- initialize			<- define name and description. 
+"
 Class {
 	#name : #ExpressionListAddCommandFromSelection,
 	#superclass : #ExpressionListCommand,
