@@ -35,11 +35,9 @@ ExpressionListEvaluateCommand >> canBeExecuted [
 
 { #category : #executing }
 ExpressionListEvaluateCommand >> execute [
-	self flag:' context is empty for now'. 
-	self expressionList evaluationContext: [  ] asContext.
-	self selectedExpression result:
-		(self expressionList evaluateExpression:
-			 self selectedExpression).
+
+	self expressionList evaluationContext: self expressionListPresenter listExpressions evaluationContext.
+	self selectedExpression result:(self expressionList evaluateExpression: self selectedExpression).
 	self expressionListPresenter updateView
 ]
 
