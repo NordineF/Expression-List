@@ -170,14 +170,19 @@ ExpressionListPresenter >> modifyExpression: aSelectedExpression [
 	^ aSelectedExpression
 ]
 
+{ #category : #'as yet unclassified' }
+ExpressionListPresenter >> onTableSelectionChanged [
+
+	self updateInspector
+]
+
 { #category : #initialization }
-ExpressionListPresenter >> newExpression [
+ExpressionListPresenter >> requestExpression [
 
 	" Create window to ask user to enter a new Expression."
 
 	| inputExpression |
-	self flag: 'change method name TO requestExpression'.
-
+	
 	inputExpression := self
 		                   request: 'Enter a new Expression'
 		                   initialAnswer: ''
@@ -186,12 +191,6 @@ ExpressionListPresenter >> newExpression [
 		  expression: inputExpression;
 		  result: 'nil';
 		  yourself
-]
-
-{ #category : #'as yet unclassified' }
-ExpressionListPresenter >> onTableSelectionChanged [
-
-	self updateInspector
 ]
 
 { #category : #testing }
