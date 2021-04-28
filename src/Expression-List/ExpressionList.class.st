@@ -129,19 +129,13 @@ ExpressionList >> evaluateExpression: anExpression [
 		anExpression result 		evaluted result of anExpression. 
 			
 	"
+	| evaluateBlock errorFlag errorMessage|
+	
+	evaluateBlock:= [ self computeResult: anExpression ].
+	
+	anExpression result: (evaluateBlock on:Exception do:[:e| errorFlag:= true. errorMessage:= e description]). 
 
-	(self contains: anExpression) ifFalse: [ 
-		ExpressionListNotContainExpressionException
-			signal: ExpressionListNotContainExpressionException message
-			argument: anExpression ].
-	anExpression result: (evaluationContext receiver class compiler
-			 source: anExpression expression readStream;
-			 context: evaluationContext;
-			 receiver: evaluationContext receiver;
-			 requestor: self;
-			 failBlock: [ ExpressionListEvaluateException signal: ExpressionListEvaluateException message argument: anExpression ];
-			 evaluate).
-	^ anExpression result
+	^ anExpression result. 
 ]
 
 { #category : #accessing }
