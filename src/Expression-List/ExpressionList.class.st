@@ -139,6 +139,12 @@ ExpressionList >> evaluateExpression: anExpression [
 ]
 
 { #category : #accessing }
+ExpressionList >> evaluationContext [
+	
+	^ evaluationContext
+]
+
+{ #category : #accessing }
 ExpressionList >> evaluationContext: aContext [
 
 	evaluationContext := aContext
