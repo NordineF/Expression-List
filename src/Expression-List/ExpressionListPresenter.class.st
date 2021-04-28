@@ -239,8 +239,7 @@ ExpressionListPresenter >> updatePresenter [
 ExpressionListPresenter >> updateView [
 
 	| storeSelectedExpression |
-	self flag:
-		'Change way we give back the selectedExpression after updateView.'.
+	
 	storeSelectedExpression := self selectExpression.
 	table items: listExpressions expressionList.
 	self selectExpression: storeSelectedExpression
