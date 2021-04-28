@@ -14,5 +14,8 @@ StDebugger class >> buildExpressionListExtentionCommandsGroupWith: stDebuggerIns
 
 	codeGroup register:
 		(ExpressionListAddCommandFromSelection forSpecContext:
-			 stDebuggerInstance)
+			 stDebuggerInstance).
+	codeGroup register:
+		(ExpressionListAddCommandFromSelectionWithToggleAutoEvaluate 
+			 forSpecContext: stDebuggerInstance)
 ]
