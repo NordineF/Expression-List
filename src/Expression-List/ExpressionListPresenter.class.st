@@ -59,13 +59,19 @@ ExpressionListPresenter class >> buildCommandsGroupWith: presenter forRoot: root
 		register:(ExpressionListToggleAutoEvaluateCommand forSpec context: presenter)
 ]
 
+{ #category : #accessing }
+ExpressionListPresenter class >> debugger: aModel [
+ 
+	self new debugger: aModel. 
+]
+
 { #category : #specs }
 ExpressionListPresenter class >> defaultSpec [
 
 	^ SpBoxLayout newVertical
-		  "add: #toolbar
+		  add: #toolbar
 			withConstraints:[:constraints| constraints height: self toolbarHeight + 5]; 
-		  "add: #table;
+		  add: #table;
 		  add: #inspector;
 		  yourself
 ]
