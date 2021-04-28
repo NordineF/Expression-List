@@ -50,6 +50,14 @@ Expression class >> expression: aString [
 ]
 
 { #category : #'as yet unclassified' }
+Expression class >> expression: aString autoEvaluate: aBoolean [
+
+	^ self new expression: aString; autoEvaluate: aBoolean.
+	
+	
+]
+
+{ #category : #'as yet unclassified' }
 Expression >> autoEvaluate [
 
 	^ autoEvaluate ifNil: [ autoEvaluate := false ]
