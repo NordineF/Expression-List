@@ -87,6 +87,21 @@ ExpressionList >> addExpressionFromStringWithToggleAutoEvaluate: aString [
 	self addExpression: (Expression expression: aString autoEvaluate: true)
 ]
 
+{ #category : #'as yet unclassified' }
+ExpressionList >> computeResult: anExpression [
+
+	^ evaluationContext receiver class compiler
+		  source: anExpression expression readStream;
+		  context: evaluationContext;
+		  receiver: evaluationContext receiver;
+		  requestor: self;
+		  failBlock: [ 
+			  ExpressionListEvaluateException
+				  signal: ExpressionListEvaluateException message
+				  argument: anExpression ];
+		  evaluate
+]
+
 { #category : #comparing }
 ExpressionList >> contains: anExpression [
 
