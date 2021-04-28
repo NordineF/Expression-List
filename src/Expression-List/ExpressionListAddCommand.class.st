@@ -29,7 +29,7 @@ ExpressionListAddCommand >> asSpecCommand [
 ExpressionListAddCommand >> execute [
 
 	| expression |
-	expression := self expressionListPresenter newExpression.
+	expression := self expressionListPresenter requestExpression.
 	self hasSelectedExpression
 		ifTrue: [ 
 			self expressionList
