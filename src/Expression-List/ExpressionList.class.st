@@ -81,6 +81,12 @@ ExpressionList >> addExpressionFromString: aString [
 	self addExpression: (Expression expression: aString)
 ]
 
+{ #category : #adding }
+ExpressionList >> addExpressionFromStringWithToggleAutoEvaluate: aString [
+
+	self addExpression: (Expression expression: aString autoEvaluate: true)
+]
+
 { #category : #comparing }
 ExpressionList >> contains: anExpression [
 
