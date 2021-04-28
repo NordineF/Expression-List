@@ -92,11 +92,17 @@ ExpressionListPresenter >> buildToolBar [
 
 	| group |
 	group := CmCommandGroup forSpec.
-	ExpressionListCommand allSubclasses do: [ :cmd | 
-		group register: (cmd forSpecContext: self) ].
+	group register: (ExpressionListAddCommand forSpecContext: self).
+	group register: (ExpressionListModifyCommand forSpecContext: self).
+	group register:
+		(ExpressionListToggleAutoEvaluateCommand forSpecContext: self).
+	group register: (ExpressionListRemoveCommand forSpecContext: self).
+	group register: (ExpressionListInspectCommand forSpecContext: self).
+	group register: (ExpressionListEvaluateCommand forSpecContext: self).
+	group register: (ExpressionHelpCommand forSpecContext: self).
+
 	^ group asToolbarPresenterWith: [ :presenter | 
-		  presenter
-			  displayMode: self application toolbarDisplayMode]
+		  presenter displayMode: self application toolbarDisplayMode ]
 ]
 
 { #category : #'debugger extension' }
