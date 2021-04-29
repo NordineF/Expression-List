@@ -47,15 +47,36 @@ Class {
 		'expressionList',
 		'evaluationContext'
 	],
+	#classInstVars : [
+		'expressionCache'
+	],
 	#category : #'Expression-List'
 }
+
+{ #category : #'cache accessing' }
+ExpressionList class >> cacheExpressionString: aString [
+
+	self expressionCache addIfNotPresent: aString
+]
+
+{ #category : #'accessing - cache' }
+ExpressionList class >> expressionCache [
+
+	^ expressionCache ifNil: [ expressionCache := OrderedCollection new ]
+]
+
+{ #category : #cache }
+ExpressionList class >> resetExpressionCache [
+
+	expressionCache := nil
+]
 
 { #category : #initialization }
 ExpressionList >> addExpression: anExpression [
 	" 	add an expression into our expressions list.
 	"
 	expressionList add: anExpression. 
-	
+	self class cacheExpressionString: anExpression expression
 ]
 
 { #category : #initialization }
@@ -78,7 +99,8 @@ ExpressionList >> addExpression: anExpression after: otherExpression [
 { #category : #adding }
 ExpressionList >> addExpressionFromString: aString [
 
-	self addExpression: (Expression expression: aString)
+	self addExpression: (Expression expression: aString).
+	
 ]
 
 { #category : #adding }
