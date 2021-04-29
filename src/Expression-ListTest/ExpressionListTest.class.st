@@ -95,6 +95,21 @@ ExpressionListTest >> testEvaluateExpression [
 ]
 
 { #category : #tests }
+ExpressionListTest >> testExpressionListCache [
+
+	| expressionList expressionString |
+	ExpressionList resetExpressionCache.
+	self assert: ExpressionList expressionCache isEmpty.
+	expressionList := ExpressionList new.
+	expressionString := '1+2'.
+	expressionList addExpressionFromString: expressionString.
+	self assert: ExpressionList expressionCache size equals: 1.
+	self
+		assert: ExpressionList expressionCache first
+		equals: expressionString
+]
+
+{ #category : #tests }
 ExpressionListTest >> testGetExpressionAtIndex [
 
 	| expressionList addedFirstExpression addedSecondExpression addedThirdExpression |
