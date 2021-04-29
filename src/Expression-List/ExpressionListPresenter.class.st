@@ -112,13 +112,21 @@ ExpressionListPresenter >> debuggerExtensionToolName [
 ]
 
 { #category : #initialization }
+ExpressionListPresenter >> initialize [
+
+	super initialize.
+	listExpressions := ExpressionList new.
+	ExpressionList expressionCache do: [ :expressionString | 
+		listExpressions addExpressionFromString: expressionString ]
+]
+
+{ #category : #initialization }
 ExpressionListPresenter >> initializePresenters [
 
 	table := self newTable.
 	toolbar := self buildToolBar.
 	inspector := nil inspectionRaw.
 	inspector owner: self.
-	listExpressions := ExpressionList new.
 	table
 		addColumn:
 			(SpStringTableColumn title: 'Expression' evaluated: #expression);
