@@ -99,6 +99,7 @@ ExpressionListPresenter >> buildToolBar [
 	group register: (ExpressionListRemoveCommand forSpecContext: self).
 	group register: (ExpressionListInspectCommand forSpecContext: self).
 	group register: (ExpressionListEvaluateCommand forSpecContext: self).
+	group register: (ExpressionListClearCache  forSpecContext: self).
 	group register: (ExpressionHelpCommand forSpecContext: self).
 
 	^ group asToolbarPresenterWith: [ :presenter | 
