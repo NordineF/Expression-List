@@ -24,8 +24,7 @@ Class {
 ExpressionListAddCommandFromSelection >> asSpecCommand [
 
 	^ super asSpecCommand
-		  iconName: #changeAdd;
-		  shortcutKey: $n meta;
+		  iconName: #glamorousInspect;
 		  yourself
 ]
 

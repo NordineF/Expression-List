@@ -11,8 +11,7 @@ Class {
 ExpressionListAddCommandFromSelectionWithToggleAutoEvaluate >> asSpecCommand [
 
 	^ super asSpecCommand
-		  iconName: #changeAdd;
-		  shortcutKey: $n meta;
+		  iconName: #glamorousInspect;
 		  yourself
 ]
 
