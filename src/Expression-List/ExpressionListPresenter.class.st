@@ -116,9 +116,7 @@ ExpressionListPresenter >> debuggerExtensionToolName [
 ExpressionListPresenter >> initialize [
 
 	super initialize.
-	listExpressions := ExpressionList new.
-	ExpressionList expressionCache do: [ :expressionString | 
-		listExpressions addExpressionFromString: expressionString ]
+	self setListFromCache
 ]
 
 { #category : #initialization }
