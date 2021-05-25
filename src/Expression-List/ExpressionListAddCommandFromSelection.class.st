@@ -47,7 +47,7 @@ ExpressionListAddCommandFromSelection >> initialize [
 
 	super initialize.
 	self
-		name: 'New expression from selection';
+		name: 'Watch expression (manual update)';
 		description:
-			'Create a new expression and add it to our expressionList'
+			'Monitor the value of the selected expression. The value has to be manually updated after context change.'
 ]

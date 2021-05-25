@@ -34,7 +34,7 @@ ExpressionListAddCommandFromSelectionWithToggleAutoEvaluate >> initialize [
 
 	super initialize.
 	self
-		name: 'New expression from selection with auto evaluate';
+		name: 'Watch expression (auto evaluate)';
 		description:
-			'Create a new expression and add it to our expressionList'
+			'Monitor the value of the selected expression. The value is automatically updated after each context change.'
 ]
