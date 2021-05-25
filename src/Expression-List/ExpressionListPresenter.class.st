@@ -215,6 +215,14 @@ ExpressionListPresenter >> selectExpression: anItem [
 ]
 
 { #category : #initialization }
+ExpressionListPresenter >> setListFromCache [
+
+	listExpressions := ExpressionList new.
+	ExpressionList expressionCache do: [ :expressionString | 
+		listExpressions addExpressionFromString: expressionString ]
+]
+
+{ #category : #initialization }
 ExpressionListPresenter >> setModelBeforeInitialization: aModel [
 	
 	debugger := aModel. 
