@@ -253,6 +253,13 @@ ExpressionListPresenter >> updatePresenter [
 ]
 
 { #category : #'as yet unclassified' }
+ExpressionListPresenter >> updateTableFromCache [
+
+	self setListFromCache.
+	table items: listExpressions expressionList
+]
+
+{ #category : #'as yet unclassified' }
 ExpressionListPresenter >> updateView [
 
 	| storeSelectedExpression |
