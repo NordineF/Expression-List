@@ -5,7 +5,7 @@ I'm an exception that is signalled in a case when a user tried to access or modi
 Class {
 	#name : #ExpressionListEmptyException,
 	#superclass : #ExpressionListException,
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #accessing }

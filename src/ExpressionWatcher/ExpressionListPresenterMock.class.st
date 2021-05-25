@@ -3,7 +3,7 @@ Class {
 	#superclass : #ExpressionListPresenter,
 	#traits : 'TStDebuggerExtension',
 	#classTraits : 'TStDebuggerExtension classTrait',
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #initialization }

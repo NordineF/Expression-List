@@ -50,7 +50,7 @@ Class {
 	#classInstVars : [
 		'expressionCache'
 	],
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #'cache accessing' }

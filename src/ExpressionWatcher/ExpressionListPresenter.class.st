@@ -44,7 +44,7 @@ Class {
 		'inspector',
 		'debugger'
 	],
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #commands }

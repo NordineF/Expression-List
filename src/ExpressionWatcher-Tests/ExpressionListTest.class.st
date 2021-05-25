@@ -1,7 +1,7 @@
 Class {
 	#name : #ExpressionListTest,
 	#superclass : #TestCase,
-	#category : #'Expression-ListTest'
+	#category : #'ExpressionWatcher-Tests'
 }
 
 { #category : #running }

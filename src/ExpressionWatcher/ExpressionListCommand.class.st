@@ -25,7 +25,7 @@ Here is classes which inherites from ExpressionListCommand:
 Class {
 	#name : #ExpressionListCommand,
 	#superclass : #CmCommand,
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #initialization }

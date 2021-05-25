@@ -17,7 +17,7 @@ Class {
 	#instVars : [
 		'selection'
 	],
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #converting }

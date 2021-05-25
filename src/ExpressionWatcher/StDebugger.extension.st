@@ -1,6 +1,6 @@
 Extension { #name : #StDebugger }
 
-{ #category : #'*Expression-List' }
+{ #category : #'*ExpressionWatcher' }
 StDebugger class >> buildExpressionListExtentionCommandsGroupWith: stDebuggerInstance forRoot: rootCommandGroup [
 
 	<extensionCommands>

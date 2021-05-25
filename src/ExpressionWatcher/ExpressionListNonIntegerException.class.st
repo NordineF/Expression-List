@@ -5,7 +5,7 @@ I'm an exception that is signalled in a case when a user tried to access element
 Class {
 	#name : #ExpressionListNonIntegerException,
 	#superclass : #ExpressionListException,
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #accessing }

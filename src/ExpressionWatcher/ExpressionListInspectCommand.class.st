@@ -14,7 +14,7 @@ Public API and Key Messages
 Class {
 	#name : #ExpressionListInspectCommand,
 	#superclass : #ExpressionListCommand,
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #converting }

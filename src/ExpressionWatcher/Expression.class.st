@@ -40,7 +40,7 @@ Class {
 		'result',
 		'autoEvaluate'
 	],
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #'instance creation' }

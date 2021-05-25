@@ -13,7 +13,7 @@ Public API and Key Messages
 Class {
 	#name : #ExpressionHelpCommand,
 	#superclass : #ExpressionListCommand,
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #converting }

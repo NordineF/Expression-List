@@ -15,7 +15,7 @@ Public API and Key Messages
 Class {
 	#name : #ExpressionListToggleAutoEvaluateCommand,
 	#superclass : #ExpressionListCommand,
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #converting }

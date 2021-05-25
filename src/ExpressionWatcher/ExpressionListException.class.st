@@ -17,7 +17,7 @@ Messages:
 Class {
 	#name : #ExpressionListException,
 	#superclass : #Error,
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #accessing }

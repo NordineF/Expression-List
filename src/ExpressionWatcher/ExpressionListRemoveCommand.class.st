@@ -14,7 +14,7 @@ Public API and Key Messages
 Class {
 	#name : #ExpressionListRemoveCommand,
 	#superclass : #ExpressionListCommand,
-	#category : #'Expression-List'
+	#category : #ExpressionWatcher
 }
 
 { #category : #converting }
