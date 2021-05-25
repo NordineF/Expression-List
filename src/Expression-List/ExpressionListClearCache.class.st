@@ -14,3 +14,28 @@ Class {
 	#superclass : #ExpressionListCommand,
 	#category : #'Expression-List'
 }
+
+{ #category : #converting }
+ExpressionListClearCache >> asSpecCommand [
+	
+	^ super asSpecCommand
+		  iconName: #removeIcon;
+		  shortcutKey: $x meta;
+		  yourself
+]
+
+{ #category : #executing }
+ExpressionListClearCache >> execute [
+
+	self expressionList class resetExpressionCache.
+	self expressionListPresenter updateTableFromCache. 
+]
+
+{ #category : #initialization }
+ExpressionListClearCache >> initialize [
+
+	super initialize.
+	self
+		name: 'Clear cache';
+		description: 'Clear cache'.
+]
