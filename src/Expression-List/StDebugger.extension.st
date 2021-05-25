@@ -4,18 +4,22 @@ Extension { #name : #StDebugger }
 StDebugger class >> buildExpressionListExtentionCommandsGroupWith: stDebuggerInstance forRoot: rootCommandGroup [
 
 	<extensionCommands>
-	| codeGroup |
+	| codeGroup expressionWatcherGroup |
 	codeGroup := rootCommandGroup
 	             / StDebuggerCodeCommandTreeBuilder groupName
 	             /
 	             StDebuggerCodeCommandTreeBuilder new
 		             codeDebugCommandsGroupName.
+	expressionWatcherGroup := (CmCommandGroup named: 'Expression Watcher')
+		                          asSpecGroup iconName:#glamorousInspect; yourself.
+
+	codeGroup register: expressionWatcherGroup.
+	expressionWatcherGroup
+		register: (ExpressionListAddCommandFromSelection forSpecContext:
+					 stDebuggerInstance);
+		register:
+			(ExpressionListAddCommandFromSelectionWithToggleAutoEvaluate 
+				 forSpecContext: stDebuggerInstance)
 
 
-	codeGroup register:
-		(ExpressionListAddCommandFromSelection forSpecContext:
-			 stDebuggerInstance).
-	codeGroup register:
-		(ExpressionListAddCommandFromSelectionWithToggleAutoEvaluate 
-			 forSpecContext: stDebuggerInstance)
 ]
